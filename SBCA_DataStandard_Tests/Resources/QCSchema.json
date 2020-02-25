@@ -1,0 +1,126 @@
+{
+  "definitions": {
+    "PlateMemberContactArea": {
+      "type": "object",
+      "properties": {
+        "memberGuid": {
+          "type": "string"
+        },
+        "memberName": {
+          "type": "string"
+        },
+        "requiredTeeth": {
+          "type": "integer"
+        },
+        "requiredArea": {
+          "type": "number"
+        },
+        "jointStressIndex": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "memberGuid",
+        "memberName",
+        "requiredTeeth",
+        "requiredArea",
+        "jointStressIndex"
+      ]
+    },
+    "PlateQualityControlData": {
+      "type": "object",
+      "properties": {
+        "platePairGuid": {
+          "type": "string"
+        },
+        "areaMethod": {
+          "type": "string",
+          "enum": [
+            "Gross",
+            "Net"
+          ]
+        },
+        "zeroTolerancePolygon": {
+          "$ref": "#/definitions/Polygon2D"
+        },
+        "jointStressIndex": {
+          "type": "number"
+        },
+        "rotationToleranceMin": {
+          "type": "number"
+        },
+        "rotationToleranceMax": {
+          "type": "number"
+        },
+        "contactAreas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlateMemberContactArea"
+          }
+        }
+      },
+      "required": [
+        "platePairGuid",
+        "areaMethod",
+        "zeroTolerancePolygon",
+        "jointStressIndex",
+        "rotationToleranceMin",
+        "rotationToleranceMax",
+        "contactAreas"
+      ]
+    },
+    "Point2D": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ]
+    },
+    "Polygon2D": {
+      "type": "object",
+      "properties": {
+        "vertices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Point2D"
+          }
+        }
+      },
+      "required": [
+        "vertices"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "guid": {
+      "type": "string"
+    },
+    "componentGuid": {
+      "type": "string"
+    },
+    "componentName": {
+      "type": "string"
+    },
+    "plateQualityControlDatas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PlateQualityControlData"
+      }
+    }
+  },
+  "required": [
+    "guid",
+    "componentGuid",
+    "componentName",
+    "plateQualityControlDatas"
+  ]
+}

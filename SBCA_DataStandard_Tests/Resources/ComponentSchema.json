@@ -1,0 +1,771 @@
+{
+  "definitions": {
+    "Bearing": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "installationHardwareGuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "width": {
+          "type": "number"
+        },
+        "thickness": {
+          "type": "number"
+        },
+        "center": {
+          "$ref": "#/definitions/Point2D"
+        }
+      },
+      "required": [
+        "guid",
+        "description",
+        "installationHardwareGuids",
+        "width",
+        "thickness",
+        "center"
+      ]
+    },
+    "ConnectorPlate": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "materialGuid": {
+          "type": "string"
+        },
+        "materialDescription": {
+          "type": "string"
+        },
+        "connectorMaterialType": {
+          "type": "string",
+          "enum": [
+            "SteelPlate",
+            "PlywoodGusset"
+          ]
+        },
+        "fieldInstalled": {
+          "type": "boolean"
+        },
+        "center": {
+          "$ref": "#/definitions/Point3D"
+        },
+        "lengthDirection": {
+          "$ref": "#/definitions/Direction3D"
+        },
+        "widthDirection": {
+          "$ref": "#/definitions/Direction3D"
+        },
+        "thicknessDirection": {
+          "$ref": "#/definitions/Direction3D"
+        }
+      },
+      "required": [
+        "guid",
+        "name",
+        "materialGuid",
+        "materialDescription",
+        "connectorMaterialType",
+        "fieldInstalled",
+        "center",
+        "lengthDirection",
+        "widthDirection",
+        "thicknessDirection"
+      ]
+    },
+    "ConnectorPlatePair": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "guid": {
+          "type": "string"
+        },
+        "orientation": {
+          "type": "string",
+          "enum": [
+            "FrontBack",
+            "TopBottom",
+            "Other"
+          ]
+        },
+        "connectorPlates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConnectorPlate"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "guid",
+        "orientation",
+        "connectorPlates"
+      ]
+    },
+    "ConnectorPlateType": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "materialType": {
+          "type": "string",
+          "enum": [
+            "SteelPlate",
+            "PlywoodGusset"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "plateManufacturer": {
+          "type": "string",
+          "enum": [
+            "Alpine",
+            "CherokeeMetal",
+            "Eagle",
+            "MiTek",
+            "Simpson"
+          ]
+        },
+        "width": {
+          "type": "number"
+        },
+        "length": {
+          "type": "number"
+        },
+        "thickness": {
+          "type": "number"
+        },
+        "plateGauge": {
+          "type": "string",
+          "enum": [
+            "Twenty",
+            "Eighteen",
+            "Sixteen"
+          ]
+        },
+        "strengthGrade": {
+          "type": "string",
+          "enum": [
+            "Standard",
+            "HighStrength",
+            "SuperHighStrength"
+          ]
+        },
+        "galvinized": {
+          "type": "boolean"
+        },
+        "teethPerSquareInch": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "guid",
+        "materialType",
+        "description",
+        "plateManufacturer",
+        "width",
+        "length",
+        "thickness",
+        "plateGauge",
+        "strengthGrade",
+        "galvinized",
+        "teethPerSquareInch"
+      ]
+    },
+    "Direction3D": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "Hanger": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "materialGuid": {
+          "type": "string"
+        },
+        "hardwareMaterialType": {
+          "type": "string",
+          "enum": [
+            "Hanger",
+            "Screw",
+            "Other"
+          ]
+        }
+      },
+      "required": [
+        "guid",
+        "materialGuid",
+        "hardwareMaterialType"
+      ]
+    },
+    "HangerType": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "materialType": {
+          "type": "string",
+          "enum": [
+            "Hanger",
+            "Screw",
+            "Other"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "hangerManufacturer": {
+          "type": "string",
+          "enum": [
+            "Alpine",
+            "KCMetal",
+            "Simpson",
+            "USP"
+          ]
+        }
+      },
+      "required": [
+        "guid",
+        "materialType",
+        "description",
+        "hangerManufacturer"
+      ]
+    },
+    "Lumber": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "materialType": {
+          "type": "string",
+          "enum": [
+            "Lumber",
+            "Other"
+          ]
+        },
+        "nominalThickness": {
+          "type": "string"
+        },
+        "nominalWidth": {
+          "type": "string"
+        },
+        "actualThickness": {
+          "type": "number"
+        },
+        "actualWidth": {
+          "type": "number"
+        },
+        "grade": {
+          "type": "string",
+          "enum": [
+            "SelectStructuralDense",
+            "SelectStructural",
+            "SelectStructuralNonDense",
+            "Number1Dense",
+            "Number1AndBetter",
+            "Number1",
+            "Number1NonDense",
+            "Number2Dense",
+            "Number2",
+            "Number2NonDense",
+            "Number3",
+            "Stud",
+            "Construction",
+            "Standard",
+            "Utility",
+            "MSR_750f_1_4E",
+            "MSR_850f_1_4E",
+            "MSR_900f_1_0E",
+            "MSR_975f_1_6E",
+            "MSR_1050f_1_2E",
+            "MSR_1050f_1_6E",
+            "MSR_1200f_1_2E",
+            "MSR_1200f_1_3E",
+            "MSR_1200f_1_6E",
+            "MSR_1250f_1_4E",
+            "MSR_1250f_1_6E",
+            "MSR_1350f_1_3E",
+            "MSR_1350f_1_4E",
+            "MSR_1400f_1_2E",
+            "MSR_1450f_1_3E",
+            "MSR_1450f_1_5E",
+            "MSR_1500f_1_4E",
+            "MSR_1500f_1_5E",
+            "MSR_1500f_1_6E",
+            "MSR_1500f_1_7E",
+            "MSR_1600f_1_4E",
+            "MSR_1650f_1_3E",
+            "MSR_1650f_1_5E",
+            "MSR_1650f_1_6E",
+            "MSR_1650f_1_7E",
+            "MSR_1700f_1_6E",
+            "MSR_1800f_1_5E",
+            "MSR_1800f_1_6E",
+            "MSR_1800f_1_8E",
+            "MSR_1800f_2_0E",
+            "MSR_1850f_1_7E",
+            "MSR_1950f_1_5E",
+            "MSR_1950f_1_7E",
+            "MSR_2000f_1_6E",
+            "MSR_2100f_1_8E",
+            "MSR_2250f_1_7E",
+            "MSR_2250f_1_8E",
+            "MSR_2250f_1_9E",
+            "MSR_2400f_1_8E",
+            "MSR_2400f_2_0E",
+            "MSR_2500f_2_2E",
+            "MSR_2550f_1_8E",
+            "MSR_2550f_2_1E",
+            "MSR_2700f_2_0E",
+            "MSR_2700f_2_2E",
+            "MSR_2850f_1_8E",
+            "MSR_2850f_2_3E",
+            "MSR_3000f_2_4E",
+            "MEL_M_5",
+            "MEL_M_6",
+            "MEL_M_7",
+            "MEL_M_8",
+            "MEL_M_9",
+            "MEL_M_10",
+            "MEL_M_11",
+            "MEL_M_12",
+            "MEL_M_13",
+            "MEL_M_14",
+            "MEL_M_15",
+            "MEL_M_16",
+            "MEL_M_17",
+            "MEL_M_18",
+            "MEL_M_19",
+            "MEL_M_20",
+            "MEL_M_21",
+            "MEL_M_22",
+            "MEL_M_23",
+            "MEL_M_24",
+            "MEL_M_25",
+            "MEL_M_26",
+            "MEL_M_27",
+            "MEL_M_28",
+            "MEL_M_29",
+            "MEL_M_30",
+            "MEL_M_31",
+            "MEL_M_32",
+            "MEL_M_33",
+            "MEL_M_34",
+            "MEL_M_35",
+            "MEL_M_36",
+            "MEL_M_37",
+            "MEL_M_38",
+            "MEL_M_39",
+            "MEL_M_40",
+            "MEL_M_41",
+            "MEL_M_42",
+            "Other"
+          ]
+        },
+        "species": {
+          "type": "string",
+          "enum": [
+            "AlaskaCedar",
+            "AlaskaHemlock",
+            "AlaskaSpruce",
+            "AlaskaYellowCedar",
+            "Aspen",
+            "Baldcypress",
+            "BalsamFir",
+            "Beech_Birch_Hickory",
+            "CoastSitkaSpruce",
+            "CoastSpecies",
+            "Cottonwood",
+            "DouglasFir_Larch",
+            "DouglasFir_Larch_North",
+            "DouglasFir_South",
+            "EasternHemlock",
+            "EasternHemlock_BalsamFir",
+            "EasternHemlock_Tamarack",
+            "EasternHemlock_Tamarack_North",
+            "EasternSoftwoods",
+            "EasternSpruce",
+            "EasternWhitePine",
+            "EasternWhitePine_North",
+            "Hem_Fir",
+            "Hem_Fir_North",
+            "MixedMaple",
+            "MixedOak",
+            "MixedSouthernPine",
+            "MountainHemlock",
+            "NorthernPine",
+            "NorthernRedOak",
+            "NorthernSpecies",
+            "NorthernWhiteCedar",
+            "PonderosaPine",
+            "RedMaple",
+            "RedOak",
+            "RedPine",
+            "Redwood",
+            "SitkaSpruce",
+            "SouthernPine",
+            "Spruce_Pine_Fir",
+            "Spruce_Pine_Fir_South",
+            "WesternCedars",
+            "WesternCedars_North",
+            "WesternHemlock",
+            "WesternHemlock_North",
+            "WesternWhitePine",
+            "WesternWoods",
+            "WhiteOak",
+            "YellowCedar",
+            "YellowPoplar",
+            "Other"
+          ]
+        },
+        "treatmentType": {
+          "type": "string"
+        },
+        "gradingMethod": {
+          "type": "string",
+          "enum": [
+            "Visual",
+            "MachineStressRated",
+            "MachineEvaluated",
+            "Other"
+          ]
+        },
+        "structure": {
+          "type": "string",
+          "enum": [
+            "Sawn",
+            "LaminatedVeneerLumber",
+            "LaminatedStrandLumber",
+            "OrientedStrandLumber",
+            "ParallelStrandLumber",
+            "StructuralCompositeLumber",
+            "Other"
+          ]
+        }
+      },
+      "required": [
+        "guid",
+        "description",
+        "materialType",
+        "nominalThickness",
+        "nominalWidth",
+        "actualThickness",
+        "actualWidth",
+        "grade",
+        "species",
+        "treatmentType",
+        "gradingMethod",
+        "structure"
+      ]
+    },
+    "Member": {
+      "type": "object",
+      "properties": {
+        "guid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isStructural": {
+          "type": "boolean"
+        },
+        "memberType": {
+          "type": "string",
+          "enum": [
+            "TopChord",
+            "BottomChord",
+            "Web",
+            "Wedge",
+            "TopChordSlider",
+            "BottomChordSlider",
+            "GableStud",
+            "TrimEnd",
+            "WebBlock",
+            "EndVertical",
+            "NonStructuralBlock",
+            "KingPost",
+            "TopPlate",
+            "CapPlate",
+            "Cripple",
+            "Stud",
+            "Header",
+            "Other"
+          ]
+        },
+        "materialGuid": {
+          "type": "string"
+        },
+        "materialDescription": {
+          "type": "string"
+        },
+        "materialType": {
+          "type": "string",
+          "enum": [
+            "Lumber",
+            "Other"
+          ]
+        },
+        "fieldInstalled": {
+          "type": "boolean"
+        },
+        "stockLength": {
+          "type": "number"
+        },
+        "memberGeometryType": {
+          "type": "string",
+          "enum": [
+            "Normal",
+            "Other"
+          ]
+        },
+        "thickness": {
+          "type": "number"
+        },
+        "baseVertices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Point2D"
+          }
+        },
+        "endVertices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Point2D"
+          }
+        },
+        "baseBevelCuts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Polygon3D"
+          }
+        },
+        "endBevelCuts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Polygon3D"
+          }
+        }
+      },
+      "required": [
+        "guid",
+        "name",
+        "isStructural",
+        "memberType",
+        "materialGuid",
+        "materialDescription",
+        "materialType",
+        "fieldInstalled",
+        "stockLength",
+        "memberGeometryType",
+        "thickness",
+        "baseVertices",
+        "endVertices",
+        "baseBevelCuts",
+        "endBevelCuts"
+      ]
+    },
+    "Point2D": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ]
+    },
+    "Point3D": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "Polygon3D": {
+      "type": "object",
+      "properties": {
+        "vertices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Point3D"
+          }
+        }
+      },
+      "required": [
+        "vertices"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "guid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "creationProgram": {
+      "type": "string"
+    },
+    "creationProgramVersion": {
+      "type": "string"
+    },
+    "creationTimeStamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "distanceUnit": {
+      "type": "string",
+      "enum": [
+        "Inches"
+      ]
+    },
+    "angleUnit": {
+      "type": "string",
+      "enum": [
+        "Degrees",
+        "Radians"
+      ]
+    },
+    "numberOfPlies": {
+      "type": "integer"
+    },
+    "pliesFieldInstalled": {
+      "type": "boolean"
+    },
+    "componentUsage": {
+      "type": "string",
+      "enum": [
+        "Roof",
+        "Floor",
+        "Wall",
+        "Beam",
+        "Post",
+        "Ledger",
+        "Joist",
+        "Other"
+      ]
+    },
+    "lumbers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Lumber"
+      }
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Member"
+      }
+    },
+    "connectorPlateTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConnectorPlateType"
+      }
+    },
+    "connectorPlatePairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ConnectorPlatePair"
+      }
+    },
+    "bearings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Bearing"
+      }
+    },
+    "hangerTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/HangerType"
+      }
+    },
+    "hangers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Hanger"
+      }
+    }
+  },
+  "required": [
+    "guid",
+    "name",
+    "version",
+    "creationProgram",
+    "creationProgramVersion",
+    "creationTimeStamp",
+    "distanceUnit",
+    "angleUnit",
+    "numberOfPlies",
+    "pliesFieldInstalled",
+    "componentUsage",
+    "lumbers",
+    "members",
+    "connectorPlateTypes",
+    "connectorPlatePairs",
+    "bearings",
+    "hangerTypes",
+    "hangers"
+  ]
+}

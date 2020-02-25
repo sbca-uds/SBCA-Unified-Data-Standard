@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SBCA.UnifiedDataStandard</AssemblyName>
+    <RootNamespace>SBCA.UnifiedDataStandard</RootNamespace>
+    <Version>0.1.2</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/sbca-uds/SBCA-Unified-Data-Standard/wiki</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sbca-uds/SBCA-Unified-Data-Standard</RepositoryUrl>
+    <Company>SBCA</Company>
+    <Authors>SBCA</Authors>
+    <PackageId>SBCA.UnifiedDataStandard.Framework</PackageId>
+    <Product>SBCA Unified Data Standard Framework</Product>
+    <Copyright>SBCA 2020</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>A framework for generating, reading, and writing the .uds file type and all of its parts.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

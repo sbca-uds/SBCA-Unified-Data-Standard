@@ -1,0 +1,179 @@
+{
+  "guid": "dcba9337-2417-46f4-82ed-27cfd6bb5e4b",
+  "name": "Test",
+  "version": "0.1.2",
+  "creationProgram": "SBCA Uniform Data Standard Repository Tests",
+  "creationProgramVersion": "0.1.2",
+  "creationTimeStamp": "2018-06-15T00:00:00",
+  "distanceUnit": "Inches",
+  "angleUnit": "Degrees",
+  "numberOfPlies": 1,
+  "pliesFieldInstalled": false,
+  "componentUsage": "Roof",
+  "lumbers": [
+    {
+      "guid": "9db95b90-542e-4045-ae39-42ce31ef65f8",
+      "description": "2x4Number2SouthernPine",
+      "materialType": "Lumber",
+      "nominalThickness": "2",
+      "nominalWidth": "4",
+      "actualThickness": 1.5,
+      "actualWidth": 3.5,
+      "grade": "Number2",
+      "species": "SouthernPine",
+      "treatmentType": "None",
+      "gradingMethod": "Visual",
+      "structure": "Sawn"
+    }
+  ],
+  "members": [
+    {
+      "guid": "a9f7fcf8-ea8d-46e2-9024-f30fe02bc814",
+      "name": "B1",
+      "isStructural": false,
+      "memberType": "BottomChord",
+      "materialGuid": "9db95b90-542e-4045-ae39-42ce31ef65f8",
+      "materialDescription": "#2 SYP 2x4",
+      "materialType": "Lumber",
+      "fieldInstalled": false,
+      "stockLength": 120.0,
+      "memberGeometryType": "Normal",
+      "thickness": 1.5,
+      "baseVertices": [
+        {
+          "x": 100.0,
+          "y": 0.0
+        },
+        {
+          "x": 100.0,
+          "y": 3.5
+        }
+      ],
+      "endVertices": [
+        {
+          "x": 110.0,
+          "y": 0.0
+        },
+        {
+          "x": 110.0,
+          "y": 3.5
+        }
+      ],
+      "baseBevelCuts": [],
+      "endBevelCuts": []
+    }
+  ],
+  "connectorPlateTypes": [
+    {
+      "guid": "92862168-2b8c-42f6-9a68-68edaabebc29",
+      "materialType": "SteelPlate",
+      "description": "AS20 4x4",
+      "plateManufacturer": "Simpson",
+      "width": 4.0,
+      "length": 4.0,
+      "thickness": 0.0356,
+      "plateGauge": "Twenty",
+      "strengthGrade": "Standard",
+      "galvinized": true,
+      "teethPerSquareInch": 8.0
+    }
+  ],
+  "connectorPlatePairs": [
+    {
+      "name": "Joint 1",
+      "guid": "d1834ce8-4bda-44a0-ad97-b277d037dcfe",
+      "orientation": "FrontBack",
+      "connectorPlates": [
+        {
+          "guid": "00000000-0000-0000-0000-000000000000",
+          "name": "1",
+          "materialGuid": "92862168-2b8c-42f6-9a68-68edaabebc29",
+          "materialDescription": "",
+          "connectorMaterialType": "SteelPlate",
+          "fieldInstalled": false,
+          "center": {
+            "x": 60.0,
+            "y": 3.5,
+            "z": 1.5
+          },
+          "lengthDirection": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "widthDirection": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "thicknessDirection": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          }
+        },
+        {
+          "guid": "00000000-0000-0000-0000-000000000000",
+          "name": "1",
+          "materialGuid": "92862168-2b8c-42f6-9a68-68edaabebc29",
+          "materialDescription": "",
+          "connectorMaterialType": "SteelPlate",
+          "fieldInstalled": false,
+          "center": {
+            "x": 60.0,
+            "y": 3.5,
+            "z": -1.5
+          },
+          "lengthDirection": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "widthDirection": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          },
+          "thicknessDirection": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 1.0
+          }
+        }
+      ]
+    }
+  ],
+  "bearings": [
+    {
+      "guid": "1e9e3783-e616-4511-b62b-5dd5eda62fce",
+      "description": "Hanger",
+      "installationHardwareGuids": [],
+      "width": 3.5,
+      "thickness": 1.5,
+      "center": {
+        "x": 92.5,
+        "y": 0.0
+      }
+    },
+    {
+      "guid": "93067b38-4823-4d07-83cb-9fdd090b81d7",
+      "description": "Double Wall Plate",
+      "installationHardwareGuids": [],
+      "width": 3.5,
+      "thickness": 1.5,
+      "center": {
+        "x": 1.75,
+        "y": 0.0
+      }
+    }
+  ],
+  "hangerTypes": [
+    {
+      "guid": "2e6993b2-888a-40d9-b40d-468a836aaa13",
+      "materialType": "Hanger",
+      "description": "Hanger 1",
+      "hangerManufacturer": "Alpine"
+    }
+  ],
+  "hangers": []
+}
