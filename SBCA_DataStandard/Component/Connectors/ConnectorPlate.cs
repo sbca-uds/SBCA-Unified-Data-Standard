@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using SBCA.UnifiedDataStandard.Component.Connectors.ConnectorMaterials;
@@ -57,7 +57,7 @@ namespace SBCA.UnifiedDataStandard.Component.Connectors
             if (normalizedThicknessDirection.IsParallelTo(Vector3D.ZAxis))
             {
                 var halfLengthVector = ConnectorPlateType.Length / 2 * LengthDirection.ToDirection2D().ToNormalizedVector();
-                var halfWidthVector = ConnectorPlateType.Width / 2 * LengthDirection.ToDirection2D().ToNormalizedVector();
+                var halfWidthVector = ConnectorPlateType.Width / 2 * WidthDirection.ToDirection2D().ToNormalizedVector();
                 var center2D = Center.ToPoint2D();
                 return new Polygon2D
                 {
